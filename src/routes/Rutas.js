@@ -1,7 +1,7 @@
 import React from 'react'
 import {Routes,Route} from "react-router-dom";
 import {Layout} from "../layouts";
-import { Home,Footer, formAlumno,FormPersonas, AdminPersonas } from '../pages';
+import { Home, formAlumno,FormPersonas, AdminPersonas, Palapas, Salones, Albercas } from '../pages';
 
 export function Rutas() {
     const loadLayouts=(Layout,Page)=>{
@@ -19,6 +19,10 @@ export function Rutas() {
     <Route path='/formpersona' element={loadLayouts(Layout, FormPersonas)}/>
     <Route path='/formpersona/:id' element={loadLayouts(Layout, FormPersonas)}/>
     <Route path='/formpersona/:id' element={loadLayouts(Layout, FormPersonas)}/>
-   </Routes> 
+    <Route path='/palapas' element={loadLayouts(Layout, Palapas)}/>
+    <Route path='/salones' element={loadLayouts(Layout, Salones)}/>
+    <Route path='/albercas' element={loadLayouts(Layout, Albercas)}/>
+
+  </Routes> 
   )
 }

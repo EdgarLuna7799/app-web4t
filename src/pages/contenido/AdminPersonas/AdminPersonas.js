@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Axios from "../../../services/Axios";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function AdminPersonas() {
   const [personas, setPersonas] = useState([]);
-  
 
   //usar la navegación por defecto del react-router-dom
   const navigate = new useNavigate();
 
   const consultarPersonas = async () => {
     const consultar = await Axios.get("/personas");
-    console.log(consultar.data)
+    console.log(consultar.data);
     setPersonas(consultar.data);
   };
-
 
   const deletePersonas = async (id) => {
     if (window.confirm("¿Esta seguro de eliminar a la persona?")) {
@@ -30,18 +28,20 @@ export function AdminPersonas() {
   return (
     <div className="container-fluid">
       <div>
-        <h1>Administración de personas</h1>
+        <h1 align="center">Administración de locatarios</h1>
       </div>
-      <div class="container text-center">
-        <div class="row row-cols-4">
-          <div class="col-md-3">
+
+      <div class="container-fluid h-100">
+        <div class="row w-100 align-items-center">
+          <div class="col text-center">
             <button type="button" class="btn btn-primary">
               <Link class="dropdown-item" to="/formpersona">
-                Agregar personas...
+                Agregar personas
               </Link>
             </button>
           </div>
         </div>
+        <br></br>
         <div class="row row-cols-12">
           <table class="table">
             <thead>
@@ -67,16 +67,19 @@ export function AdminPersonas() {
                     <td>{persona.sexo}</td>
                     <td>{persona.telefono}</td>
                     <td>
-                      <button type="button" 
-                      class="btn btn-info"
-                      onClick={()=>navigate(`/formpersona/${persona._id}`)}
+                      <button
+                        type="button"
+                        class="btn btn-info"
+                        onClick={() => navigate(`/formpersona/${persona._id}`)}
                       >
                         Editar
                       </button>
                     </td>
                     <td>
-                      <button type="button" class="btn btn-danger"
-                      onClick={()=>deletePersonas(persona._id)}
+                      <button
+                        type="button"
+                        class="btn btn-danger"
+                        onClick={() => deletePersonas(persona._id)}
                       >
                         Delete
                       </button>
